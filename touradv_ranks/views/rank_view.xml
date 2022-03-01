@@ -1,0 +1,105 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="touradv_ranks.rank_model_list">
+      <field name="name">rank List</field>
+      <field name="model">touradv_ranks.rank_model</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="leveled"/>
+          <field name="image"/>
+          <field name="game_id"/>
+        </tree>
+      </field>
+    </record>
+
+    
+    <!--<record model="ir.ui.view" id="custom_ranks_tournament_app.rank_model_search">
+      <field name="name">rank Filters</field>
+      <field name="model">custom_ranks_tournament_app.rank_model</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <filter string="Finished" name="Finished" domain="[('active','=',False)]"/>
+        </search>
+      </field>
+    </record>-->
+
+
+
+    <record model="ir.ui.view" id="touradv_ranks.rank_model_form">
+      <field name="name">rank Form</field>
+      <field name="model">touradv_ranks.rank_model</field>
+      <field name="arch" type="xml">
+        <form string="ranks">
+          <header>
+          </header>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="leveled"/>
+              <field name="image"/>
+              <field name="game_id"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="touradv_ranks.rank_model_kanban">
+      <field name="name">rank list</field>
+      <field name="model">touradv_ranks.rank_model</field>
+      <field name="arch" type="xml">
+        <kanban class="o_res_partner_kanban">
+          <field name="name"/>
+          <field name="game_id"/>
+          <templates>
+            <t t-name="kanban-box">
+              <div t-attf-class="oe_kanban_global_click">
+                <div class="o_kanban_image">
+                  <field name="image" nolabel="1" widget="image" class="oe_right oe_avatar"/>
+                </div>
+                <div class="oe_kanban_details">
+                  <strong>
+                    <field name="name" class="oe_inline"/> <br/>
+                    <field name="game_id"/>
+                  </strong>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="touradv_ranks.action_window_rank">
+      <field name="name">rank Window</field>
+      <field name="res_model">touradv_ranks.rank_model</field>
+      <field name="view_mode">kanban,form</field>
+
+    </record>
+
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="task_app.action_server">
+      <field name="name">task_app server</field>
+      <field name="model_id" ref="model_task_app_task_app"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+<menuitem name="Ranks" id="tournament_app.menu_import_list" parent="tournament_app.menu_option"
+              action="touradv_ranks.action_window_rank"/>
+
+  </data>
+</odoo>

@@ -1,0 +1,64 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+   <!-- <record model="ir.ui.view" id="touradv_ranks.adv_player_model_list">
+      <field name="name">Player List</field>
+      <field name="model">tournament_app.player_model</field>
+      <field name="mode">primary</field>
+      <field name="inherit_id" ref="tournament_app.player_model_list"/>
+      <field name="arch" type="xml">
+        <field name="name" position="after">
+          <field name="rank_id"/>
+        </field>
+       <field name="email" position="after">
+          <field name="last_rank_id"/>
+        </field>-
+      </field>
+    </record>-->
+  
+
+
+    <record model="ir.ui.view" id="touradv_ranks.adv_player_model_form">
+      <field name="name">Player Form</field>
+      <field name="model">tournament_app.player_model</field>
+      <field name="mode">primary</field>
+      <field name="inherit_id" ref="tournament_app.player_model_form"/>
+      <field name="arch" type="xml">
+        <field name="name" position="after">
+          <field name="rank_id"/>
+        </field>
+       <field name="email" position="after">
+          <field name="last_rank_id"/>
+        </field>
+      </field>
+    </record>
+
+<!--
+
+    <record model="ir.actions.act_window" id="tournament_app.action_window_player">
+      <field name="name">Player Window</field>
+      <field name="res_model">tournament_app.player_model</field>
+      <field name="view_mode">form,tree</field>
+
+    </record>-->
+
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="task_app.action_server">
+      <field name="name">task_app server</field>
+      <field name="model_id" ref="model_task_app_task_app"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+  </data>
+</odoo>
